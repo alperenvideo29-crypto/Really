@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGS Türkçe Oyun ve Soru Portalı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <main class="app">
+
+    <!-- 1) GİRİŞ / KARŞILAMA EKRANI -->
+    <section id="screen-start" class="screen active">
+      <div class="card hero">
+        <div class="logo"><i class="fa-solid fa-book-open-reader"></i></div>
+        <h1>LGS Türkçe Oyun ve Soru Portalı</h1>
+        <p class="lead">8. sınıf Türkçe konularını yarışarak tekrar et. Doğru cevap puan kazandırır, yanlış cevap bir canını götürür.</p>
+
+        <ul class="units">
+          <li><i class="fa-solid fa-font"></i> Sözcükte ve söz öbeklerinde anlam</li>
+          <li><i class="fa-solid fa-comment-dots"></i> Cümlede anlam</li>
+          <li><i class="fa-solid fa-align-left"></i> Parçada anlam</li>
+          <li><i class="fa-solid fa-spell-check"></i> Dil bilgisi</li>
+        </ul>
+
+        <form id="start-form" autocomplete="off">
+          <label for="player-name">Adın nedir şampiyon?</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-user"></i>
+            <input id="player-name" type="text" maxlength="20" placeholder="Adını yaz" required>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit"><i class="fa-solid fa-rocket"></i> Oyuna Başla</button>
+        </form>
+
+        <div class="rules">
+          <span><i class="fa-solid fa-heart"></i> 5 can</span>
+          <span><i class="fa-solid fa-star"></i> Doğru başına 10 puan</span>
+          <span><i class="fa-solid fa-fire"></i> 3 doğruda seri bonusu</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) OYUN / YARIŞMA PANELİ -->
+    <section id="screen-game" class="screen">
+      <header class="card hud">
+        <div class="hud-row">
+          <div class="chip"><i class="fa-solid fa-user-graduate"></i> <span id="hud-name">Oyuncu</span></div>
+          <div class="chip score"><i class="fa-solid fa-star"></i> <span id="hud-score">0</span> puan</div>
+          <div class="lives" id="hud-lives" aria-label="Kalan canlar"></div>
+        </div>
+        <div class="hud-row">
+          <span class="counter">Soru <b id="hud-index">1</b>/<span id="hud-total">15</span></span>
+          <span class="unit-badge" id="q-unit"></span>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Oyun ilerlemesi">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </header>
+
+      <!-- SORU ALANI -->
+      <article class="card question-card">
+        <p class="q-text" id="q-text"></p>
+        <div class="options" id="options"></div>
+      </article>
+
+      <!-- AÇIKLAMALI ÇÖZÜM KUTUSU -->
+      <aside class="card solution" id="solution" hidden aria-live="polite">
+        <h3 id="sol-title"></h3>
+        <p id="sol-text"></p>
+        <p class="tip"><i class="fa-solid fa-lightbulb"></i> <span id="sol-tip"></span></p>
+        <button id="btn-next" class="btn btn-primary" type="button">Sonraki Soru</button>
+      </aside>
+    </section>
+
+    <!-- 3) BİTİŞ / SKOR EKRANI -->
+    <section id="screen-end" class="screen">
+      <div class="card result">
+        <div class="trophy" id="end-icon"><i class="fa-solid fa-trophy"></i></div>
+        <h2 id="end-title"></h2>
+        <p class="lead" id="end-msg"></p>
+
+        <div class="stats">
+          <div class="stat ok"><i class="fa-solid fa-circle-check"></i><b id="st-correct">0</b><span>Doğru</span></div>
+          <div class="stat bad"><i class="fa-solid fa-circle-xmark"></i><b id="st-wrong">0</b><span>Yanlış</span></div>
+          <div class="stat net"><i class="fa-solid fa-scale-balanced"></i><b id="st-net">0</b><span>Net</span></div>
+          <div class="stat pts"><i class="fa-solid fa-star"></i><b id="st-score">0</b><span>Puan</span></div>
+        </div>
+
+        <p class="best" id="st-best"></p>
+        <button id="btn-restart" class="btn btn-primary" type="button"><i class="fa-solid fa-rotate-right"></i> Yeniden Başla</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
